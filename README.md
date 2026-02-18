@@ -1,6 +1,6 @@
-# ML Portfolio Project 🚀
+# ML Portfolio Project
 
-## 🎯 Project Overview
+## Project Overview
 
 An end-to-end Machine Learning portfolio project demonstrating supervised and unsupervised learning on the **Kaggle House Prices** dataset. This project showcases production-quality ML practices including:
 
@@ -11,7 +11,7 @@ An end-to-end Machine Learning portfolio project demonstrating supervised and un
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ml-portfolio-project/
@@ -43,9 +43,10 @@ ml-portfolio-project/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
+
 - Python 3.10+
 - [UV Package Manager](https://github.com/astral-sh/uv)
 - Kaggle API credentials (optional — can place CSV manually)
@@ -74,27 +75,43 @@ uv run jupyter lab
 ```
 
 ### Running Notebooks
+
 1. Open `notebooks/01_EDA_and_FeatureEngineering.ipynb` — Run all cells for EDA & preprocessing
 2. Open `notebooks/02_Modeling_and_Evaluation.ipynb` — Run all cells for training & evaluation
 
 ---
 
-## 📊 Results Summary
+## Results Summary
 
-| Model | RMSE | MAE | R² |
-|-------|------|-----|-----|
-| Baseline | — | — | — |
-| Ridge | — | — | — |
-| RandomForest | — | — | — |
-| XGBoost | — | — | — |
-| LightGBM | — | — | — |
-| SVM | — | — | — |
+### Model Performance Metrics
 
-> **Note:** Run the notebooks to populate these results.
+| Model | RMSE | MAE | R² | MAPE (%) |
+|-------|------|-----|-----|----------|
+| **XGBoost** | 21,743 | 13,302 | 0.9410 | 7.10 |
+| **LightGBM** | 25,712 | 14,699 | 0.9175 | 7.88 |
+| **RandomForest** | 26,391 | 15,526 | 0.9131 | 8.52 |
+| **Linear** | 30,332 | 16,621 | 0.8852 | 8.81 |
+| **SVM** | 44,711 | 23,807 | 0.7507 | 10.84 |
+| **Baseline** | 90,118 | 64,730 | -0.0129 | 37.51 |
+
+**Best Model:** XGBoost (lowest RMSE: 21,743)
+
+### Understanding the Metrics
+
+These metrics measure how well each model predicts **sale price** on held-out test data:
+
+| Metric | What it measures | Better when |
+|--------|------------------|-------------|
+| **RMSE** (Root Mean Squared Error) | Typical prediction error in **dollars** (same units as price). | **Lower** is better (less error). |
+| **MAE** (Mean Absolute Error) | Average absolute error in **dollars**. | **Lower** is better. |
+| **R²** (R-squared) | Fraction of variation in prices explained by the model (0 to 1). | **Higher** is better (1 = perfect fit). |
+| **MAPE** (Mean Absolute % Error) | Average error as a **percentage** of the actual price. | **Lower** is better (e.g. 7% is better than 15%). |
+
+**Interpretation:** Lower RMSE, MAE, and MAPE mean more accurate predictions; higher R² means the model explains more of the variation in prices. The "Best Model" is selected based on the lowest RMSE.
 
 ---
 
-## 📈 Key Techniques
+## Key Techniques
 
 | Category | Methods |
 |----------|---------|
@@ -107,7 +124,7 @@ uv run jupyter lab
 
 ---
 
-## 🐳 Docker
+## Docker
 
 ```bash
 # Build image
@@ -123,7 +140,7 @@ docker run -p 8888:8888 -v $(pwd):/app ml-portfolio \
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -135,13 +152,19 @@ uv run pytest --cov=src --cov-report=html
 
 ---
 
-## 📝 Reports
+## Reports
 
 - [Model Comparison](reports/model_comparison.md) — Side-by-side metrics for all models
 - [Final Report](reports/final_report.md) — Detailed methodology and findings
 
 ---
 
-## 📄 License
+## Dataset
+
+This project uses the **Ames Housing** dataset from Kaggle: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques).
+
+---
+
+## License
 
 MIT License
